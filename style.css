@@ -1,0 +1,311 @@
+/* --- Variables & Setup --- */
+:root {
+    --bg-color: #0b0c10;
+    --surface-color: rgba(31, 40, 51, 0.6);
+    --primary-color: #45f3ff;
+    --secondary-color: #c724b1;
+    --text-main: #c5c6c7;
+    --text-bright: #ffffff;
+    --glass-border: rgba(69, 243, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Rajdhani', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(69, 243, 255, 0.05), transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(199, 36, 177, 0.05), transparent 25%);
+}
+
+h1, h2, h3, h4, .glitch, .cta-btn {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* --- Typography --- */
+.text-muted { color: #888; font-size: 0.9rem; }
+.mt-10 { margin-top: 10px; }
+.mt-50 { margin-top: 50px; }
+
+/* --- Navigation --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s, backdrop-filter 0.3s;
+    padding: 15px 0;
+}
+
+header.scrolled {
+    background: rgba(11, 12, 16, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.clan-logo {
+    height: 40px;
+    width: auto;
+    border-radius: 5px;
+    /* Styles nicely even if image is missing */
+    background: var(--surface-color);
+    color: transparent; 
+}
+
+.clan-name {
+    color: var(--text-bright);
+    font-size: 1.5rem;
+    text-shadow: 0 0 10px var(--primary-color);
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
+}
+
+/* --- Hero Section --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to bottom, rgba(11,12,16,0.2), var(--bg-color)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.05"><path d="M0 0h100v100H0z" fill="%23fff"/><path d="M0 0l100 100M100 0L0 100" stroke="%2345f3ff" stroke-width="1"/></svg>');
+    background-size: cover;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.glitch {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--text-bright);
+    position: relative;
+    text-shadow: 0 0 20px var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.cta-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    color: var(--bg-color);
+    background: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px var(--primary-color);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px var(--primary-color), 0 0 45px var(--primary-color);
+}
+
+/* --- Layout & Sections --- */
+.section-padding {
+    padding: 100px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--text-bright);
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+}
+
+.section-title span {
+    color: var(--secondary-color);
+    text-shadow: 0 0 10px var(--secondary-color);
+}
+
+.category-title {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 10px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 30px;
+}
+
+/* --- Glassmorphism Cards --- */
+.glass-card {
+    background: var(--surface-color);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 25px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 30px rgba(69, 243, 255, 0.1);
+}
+
+.accent-border:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 10px 30px rgba(199, 36, 177, 0.1);
+}
+
+/* --- Specific Components --- */
+.glass-card h4 {
+    font-size: 1.3rem;
+    color: var(--text-bright);
+    margin-bottom: 15px;
+}
+
+.glass-card ul {
+    list-style: none;
+}
+
+.glass-card ul li {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.dor {
+    color: #ffd700;
+    font-weight: 700;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    margin-top: 15px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.05);
+}
+
+.tag.gold { color: #ffd700; border: 1px solid #ffd700; }
+.tag.silver { color: #c0c0c0; border: 1px solid #c0c0c0; }
+
+.legends-sub {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.event-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+}
+.event-list li:last-child { border: none; }
+.event-list span { color: var(--secondary-color); display: block; font-weight: 700; font-family: 'Orbitron', sans-serif;}
+.world-cup span { color: #ffd700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+
+.rivalry-list li {
+    background: rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+.rivalry-list .matchup {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.rivalry-list .teams { font-size: 1.1rem; color: var(--text-bright); }
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(11, 12, 16, 0.9);
+}
+
+/* --- Scroll Animations --- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+    .glitch { font-size: 2.5rem; }
+    .nav-links { display: none; } /* Simple collapse for mobile, you can add a hamburger menu later if needed */
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .nav-container { justify-content: center; }
+}
